@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using BepInEx;
 using HarmonyLib;
 using Assets.Scripts;
 using Assets.Scripts.Util;
@@ -8,6 +9,7 @@ using Assets.Scripts.Objects.Chutes;
 using Assets.Scripts.Objects.Items;
 using Assets.Scripts.Objects.Pipes;
 using UnityEngine;
+using StationeersBepInEx.LetHarvieUseFertilizer;
 
 namespace StationeersBepInEx.LetHarvieUseFertilizer.Scripts
 {
@@ -30,7 +32,7 @@ namespace StationeersBepInEx.LetHarvieUseFertilizer.Scripts
 			}
 			catch (Exception ex)
 			{
-                Debug.LogError("[" + PluginInfo.PLUGIN_NAME + "] Could not get _isHarvesting via Reflection of Harvester: " + ex.Message);
+				LetHarvieUseFertilizerPlugin.ModLogger.LogError("Could not get _isHarvesting via Reflection of Harvester: " + ex.Message);
 			}
 			return isHarvesting;
 		}
@@ -46,7 +48,7 @@ namespace StationeersBepInEx.LetHarvieUseFertilizer.Scripts
 			}
 			catch (Exception ex)
 			{
-				Debug.LogError("[" + PluginInfo.PLUGIN_NAME + "] Could not get _isPlanting via Reflection of Harvester: " + ex.Message);
+				LetHarvieUseFertilizerPlugin.ModLogger.LogError("Could not get _isPlanting via Reflection of Harvester: " + ex.Message);
 			}
 			return isPlanting;
 		}
@@ -143,7 +145,7 @@ namespace StationeersBepInEx.LetHarvieUseFertilizer.Scripts
 					}
 					else
                     {
-						Debug.LogError("[" + PluginInfo.PLUGIN_NAME + "] Could not get HydroponicTray slot1 of Harvester.");
+						LetHarvieUseFertilizerPlugin.ModLogger.LogError("Could not get HydroponicTray slot1 of Harvester.");
 					}
 				}
 			}
